@@ -8,7 +8,7 @@ import {
   BOOKING,
   DISCOUNT_BANNER,
 } from "../data/bangkokPackage";
-import  logo  from "../../assets/GrabThatTrip_White.svg"
+import  logo  from "../../assets/GrabThatTrip_White1.svg" //this is logo 
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
