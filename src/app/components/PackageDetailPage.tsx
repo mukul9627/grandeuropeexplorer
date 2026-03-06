@@ -8,6 +8,7 @@ import {
   BOOKING,
   DISCOUNT_BANNER,
 } from "../data/bangkokPackage";
+import  logo  from "../../assets/GrabThatTrip_White.svg"
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
@@ -228,8 +229,7 @@ export default function PackageDetailPage() {
       <nav className="bg-[#0A6A67] text-white sticky top-0 z-50 shadow-lg">
         <div className="nav-inner py-3 md:py-4">
           <div className="flex items-center gap-2">
-            <span className="text-xl font-black tracking-tight">GTT</span>
-            <span className="text-teal-300 text-[13px] font-medium">Explore</span>
+          <img src={logo} alt="Logo" width={70} height={70} />
           </div>
           <div className="hidden md:flex items-center gap-8 font-medium">
             {["Home", "Destinations", "About Us", "Blog"].map((item) => (
@@ -239,9 +239,9 @@ export default function PackageDetailPage() {
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <button className="border border-teal-400 text-white text-[15px] px-4 py-1.5 rounded-full hover:bg-teal-700 transition-colors">
-              Log In
-            </button>
+            {/* <button className="border border-teal-400 text-white text-[15px] px-4 py-1.5 rounded-full hover:bg-teal-700 transition-colors">
+             
+            </button> */}
           </div>
         </div>
       </nav>
@@ -373,13 +373,7 @@ export default function PackageDetailPage() {
             {/* ── Brand column ── */}
             <div>
               <div className="mb-6">
-                <svg viewBox="0 0 60 64" className="w-16 h-16">
-                  <text x="4" y="18" style={{ fontFamily: "'Lato', sans-serif", fontSize: 13, fontWeight: 700, fill: "white" }}>grab</text>
-                  <text x="4" y="36" style={{ fontFamily: "'Lato', sans-serif", fontSize: 13, fontWeight: 700, fill: "white" }}>that</text>
-                  <text x="4" y="54" style={{ fontFamily: "'Lato', sans-serif", fontSize: 13, fontWeight: 700, fill: "#0A9E8A" }}>trip</text>
-                  <path d="M 3 58 Q -10 32 3 6" stroke="#0A9E8A" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-                  <path d="M 3 58 Q 52 65 56 58" stroke="#0A9E8A" strokeWidth="2.5" fill="none" strokeLinecap="round"/>
-                </svg>
+               <img src={logo} alt="logo" width={70} height={75} />
               </div>
 
               <div
