@@ -1,0 +1,250 @@
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE LAYOUT & SPACING SYSTEM  ·  8px grid
+   ───────────────────────────────────────────────────────────────
+   Mobile  375px   → 4-col  · 16–20px margins  · 16px gutter
+   Tablet  768px   → 8-col  · 40px  margins    · 20px gutter
+   Desktop 1440px  → 12-col · 80px  margins    · 24px gutter
+           (max-width 1280px + auto margins = 80px each side)
+   Large   1600px+ → 12-col · auto margins     · max-width 1320px
+═══════════════════════════════════════════════════════════════ */
+
+/* ─── Spacing tokens (8px base grid) ─── */
+:root {
+  /* Layout */
+  --container-max-desk:   1280px;
+  --container-max-large:  1320px;
+  --gutter-mobile:        1rem;        /* 16px */
+  --gutter-tablet:        1.25rem;     /* 20px */
+  --gutter-desk:          1.5rem;      /* 24px */
+
+  /* Section vertical rhythm */
+  --section-gap-desk:     4rem;        /* 64px  between major sections */
+  --section-gap-tablet:   3rem;        /* 48px */
+  --section-gap-mobile:   2.5rem;      /* 40px */
+
+  /* Heading → content gap */
+  --heading-gap-desk:     1.5rem;      /* 24px */
+  --heading-gap-mobile:   1rem;        /* 16px */
+
+  /* Card / component gap */
+  --card-gap-desk:        1.5rem;      /* 24px */
+  --card-gap-mobile:      1rem;        /* 16px */
+
+  /* Component padding */
+  --card-pad:             1.5rem;      /* 24px */
+  --card-pad-lg:          2rem;        /* 32px */
+  --btn-py:               0.875rem;    /* 14px */
+  --btn-px:               1.5rem;      /* 24px */
+  --input-py:             0.75rem;     /* 12px */
+  --input-px:             1rem;        /* 16px */
+  --icon-gap:             0.5rem;      /* 8px  */
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PAGE CONTAINER
+   Fluid centering: fills with padding on small screens,
+   caps at 1280px with 80px auto-margins at 1440px.
+───────────────────────────────────────────────────────────────*/
+.page-container {
+  width: 100%;
+  max-width: var(--container-max-desk);
+  margin-inline: auto;
+  padding-inline: 1rem;           /* mobile: 16px */
+}
+
+@media (min-width: 480px) {
+  .page-container {
+    padding-inline: 1.25rem;      /* 20px */
+  }
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding-inline: 2.5rem;       /* tablet: 40px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-container {
+    padding-inline: 3.5rem;       /* small desktop: 56px */
+  }
+}
+
+/* At 1360px+ the max-width+auto-margin naturally gives ≥80px breathing room */
+@media (min-width: 1360px) {
+  .page-container {
+    padding-inline: 0;
+  }
+}
+
+/* Large screens: widen the cap slightly */
+@media (min-width: 1600px) {
+  .page-container {
+    max-width: var(--container-max-large);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   NAVBAR INNER WRAPPER
+   Keeps nav content aligned with the page container.
+───────────────────────────────────────────────────────────────*/
+.nav-inner {
+  width: 100%;
+  max-width: var(--container-max-desk);
+  margin-inline: auto;
+  padding-inline: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (min-width: 480px)  { .nav-inner { padding-inline: 1.25rem; } }
+@media (min-width: 768px)  { .nav-inner { padding-inline: 2.5rem; } }
+@media (min-width: 1024px) { .nav-inner { padding-inline: 3.5rem; } }
+@media (min-width: 1360px) { .nav-inner { padding-inline: 0; } }
+@media (min-width: 1600px) { .nav-inner { max-width: var(--container-max-large); } }
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION SPACING  — vertical rhythm between page sections
+───────────────────────────────────────────────────────────────*/
+.section-block {
+  margin-bottom: var(--section-gap-mobile);
+}
+
+@media (min-width: 768px) {
+  .section-block {
+    margin-bottom: var(--section-gap-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-block {
+    margin-bottom: var(--section-gap-desk);
+  }
+}
+
+/* Heading → body gap inside a section */
+.section-header {
+  margin-bottom: var(--heading-gap-mobile);
+}
+@media (min-width: 768px) {
+  .section-header {
+    margin-bottom: var(--heading-gap-desk);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CARD GRIDS  — uniform gaps between cards/components
+───────────────────────────────────────────────────────────────*/
+.card-grid {
+  display: grid;
+  gap: var(--card-gap-mobile);
+}
+
+@media (min-width: 768px) {
+  .card-grid { gap: var(--card-gap-desk); }
+}
+
+.card-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.card-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.card-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1023px) {
+  .card-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .card-grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 639px) {
+  .card-grid-2,
+  .card-grid-3,
+  .card-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CARD SURFACE PADDING
+───────────────────────────────────────────────────────────────*/
+.card-body    { padding: var(--card-pad); }
+.card-body-lg { padding: var(--card-pad-lg); }
+
+@media (max-width: 639px) {
+  .card-body    { padding: 1rem; }
+  .card-body-lg { padding: 1.25rem; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BUTTON  — consistent hit-target sizing
+───────────────────────────────────────────────────────────────*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--icon-gap);
+  padding: var(--btn-py) var(--btn-px);
+  border-radius: 0.75rem;
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: var(--type-body-size, 1rem);
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.18s ease, background-color 0.18s ease;
+  white-space: nowrap;
+}
+
+.btn-primary  { background-color: #0A6A67; color: #ffffff; }
+.btn-primary:hover { opacity: 0.88; }
+
+.btn-outline  { background: transparent; border: 1.5px solid #0A6A67; color: #0A6A67; }
+.btn-outline:hover { background-color: rgba(10,106,103,0.07); }
+
+/* ─────────────────────────────────────────────────────────────
+   FORM INPUTS
+───────────────────────────────────────────────────────────────*/
+.input-field {
+  width: 100%;
+  padding: var(--input-py) var(--input-px);
+  border: 1px solid rgba(0,0,0,0.13);
+  border-radius: 0.75rem;
+  font-family: var(--font-body, 'Lato', sans-serif);
+  font-size: var(--type-body-size, 1rem);
+  line-height: 1.5;
+  background: #ffffff;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.input-field:focus {
+  border-color: #0A6A67;
+  box-shadow: 0 0 0 3px rgba(10,106,103,0.1);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   ICON + TEXT PAIR  — enforces 8px icon-label gap
+───────────────────────────────────────────────────────────────*/
+.icon-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--icon-gap);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   12-COLUMN GRID HELPER
+   Usage: <div class="grid-12"> children with col-span-* </div>
+───────────────────────────────────────────────────────────────*/
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter-desk);
+}
+
+@media (max-width: 1023px) {
+  .grid-12 {
+    grid-template-columns: repeat(8, 1fr);
+    gap: var(--gutter-tablet);
+  }
+}
+
+@media (max-width: 767px) {
+  .grid-12 {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gutter-mobile);
+  }
+}
